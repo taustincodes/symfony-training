@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+{% endblock %}
+
+{% block body %}
+
+<div class="block">
+    <div class="blocktitle"><h2>{{ category|capitalize }}</h2></div>
+    <div style=" text-align:center; width:100%; ">
+        <form method="post">
+            <input style="width:88%; height:40px;"type="text" id="search" name="search" placeholder="Search for products...">
+            <input class="button3" type="submit">
+        </form>
+    </div>
+
+
+
+</div>
+    <div class="flex-container" style="margin-top:5px;">
+        {% for product in products %}
+        <div class="productHover" data-key="{{ product.id }}">
+            <a href="/product/{{ product.id }}">
+                <div class="hover" id="hover{{ product.id }}">
+                    <h3 style="font-family: 'Trebuchet MS', sans-serif;">£{{ product.price }}</h3>
+                    <h6>{{ product.description }}</h6>
+                </div>
+                <img style="height:100%; width:auto;"src="{{ asset(product.image) }}">
+            </a>
+
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}

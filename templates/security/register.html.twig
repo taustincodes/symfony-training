@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sign up{% endblock %}
+
+{% block body %}
+<div class="block">
+    <div class="blocktitle"><h2>CREATE AN ACCOUNT</h2></div>
+        <div class = "form-box">
+            <form class="form-signin" method="post">
+                <label for="inputEmail">Email Address</label>
+                <input id="form-input" type="email" name="email" id="inputEmail" placeholder="Enter Email" required>
+                <br>
+                <label for="inputLastName">Password</label>
+                <input id="form-input" type="password" name="password" id="password" placeholder="Enter Password" required>
+                <br>
+                <label for="inputFirstName">First Name</label>
+                <input id="form-input" type="text" name="firstName" id="inputFirstName" placeholder="Enter First name" required>
+                <br>
+                <label for="inputLastName">Last Name</label>
+                <input id="form-input" type="text" name="lastName" id="inputLastName" placeholder="Enter Last Name" required>
+                <br>
+                <label for="inputAddress">Address</label>
+                <input id="form-input" type="text" name="address" id="inputAddress" placeholder="Enter Address" required>
+                <br>
+                <label for="inputPostcode">Postcode</label>
+                <input id="form-input" type="text" name="postcode" id="inputPostcode" placeholder="Enter Postcode" required>
+
+                <div style="text-align: center">
+                    <input type="checkbox" name="_remember_me" required> By creating an account you agree to our Terms & Privacy.
+                </div>
+                <br>
+                <button style="width:100%;margin-top:5px;" class="button1" type="submit">
+                    Register
+                </button>
+            </form>
+        </div>
+</div>
+{% endblock %}

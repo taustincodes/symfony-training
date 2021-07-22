@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+{% endblock %}
+
+{% block body %}
+    <div class="basket"><div class="blocktitle"><h2>MY BASKET</h2></div>
+
+    {% if status.empty == true %}
+        <div id="emptyBasket">
+        <span style="margin-top:10vh"class="material-icons">shopping_basket</span>
+        <p>Your basket is empty</p>
+        </div>
+    {% endif %}
+
+    <table id="basket">
+        {% for key in basket|keys %}
+
+            <tr id="row{{ key }}">
+        <td style="text-align: center;"><img style="height:100%;"src="{{ asset(products[key].image) }}"></td>
+        <td>
+            <b>{{ products[key].name }}</b>
+            <p>{{ products[key].description }}</p>
+        </td>
+        <td><div id="quant">
+                <button style="float:left;margin-left:30%;" class="quantityDown" data-key="{{ key }}">-</button>
+                <button style="float:right;margin-right:30%;"class="quantityUp" data-key="{{ key }}">+</button>
+                <p  id="quantity{{ key }}" style="line-height: 1.1;">{{ basket[key].quantity }}</p>
+            </div>
+        </td>
+        <td style="text-align: center;font-family: 'Trebuchet MS', sans-serif;"><p>£{{ products[key].price }}</p></td>
+
+        <td id="tester"><button class="removeFromBasket" data-key="{{ key }}">X</button></td>
+    </tr>
+    {% endfor %}
+
+    {% if status.empty == false %}
+        <tr id="total">
+        <td></td>
+        <td></td>
+        <td></td>
+        <td style="text-align: center; ">
+            <h2 id="totalPrice" style="font-family: 'Trebuchet MS', sans-serif;">Total: £{{ status.price }}</h2>
+            <a href="{{ path('app_login') }}" style="text-decoration: none"><div style="background: black; color:white; height:20%; line-height: 2">CHECKOUT</div></a>
+        </tr>
+    {% endif %}
+
+    </table>
+
+
+
+
+    <br>
+    <br>
+    <br>
+
+{% endblock %}

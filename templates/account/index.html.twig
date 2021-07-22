@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Account{% endblock %}
+
+{% block body %}
+    <div class="block">
+        <div class="blocktitle"><h2>ACCOUNT</h2></div>
+        {% if (app.user) is defined %}
+
+            <div class="float-container" style="margin-bottom:80vh;">
+                <div class="float-child1">
+                    <div>
+                        <b> Account details</b><br>
+                        First name: {{ app.user.firstName }}  <br>
+                        Last name: {{ app.user.lastName }}  <br>
+                        Email: {{ app.user.userName }} <br>
+                        Address: {{ app.user.address }}<br>
+                        Postcode: {{ app.user.postcode }}<br>
+                    </div>
+                    <div style="width:50%">
+                    <a class="register" href="{{ path('logout') }}">Log off</a>
+                    </div>
+
+                </div>
+
+                <div class="float-child2" >
+                    <div>
+                        <b> Order history</b><br>
+                        {% if orders is empty %}
+                            No order history to display
+                        {% else %}
+                        <table id="pastOrders">
+                            <th>Date</th>
+                            <th>ProductId</th>
+                            <th>Quantity</th>
+                            <th>Address</th>
+                            <th>Postcode</th>
+                        {% endif %}
+                            {% for order in orders %}
+                                <tr>
+                                    <td>{{ order.date }}</td>
+                                    <td>{{ order.productId}}</td>
+                                    <td>{{ order.quantity }}</td>
+                                    <td>{{ order.address }}</td>
+                                    <td>{{ order.postcode }}</td>
+                                </tr>
+                            {% endfor %}
+                        </table>
+                    </div>
+                </div>
+
+                {% endif %}
+            </div>
+    </div>
+
+
+{% endblock %}

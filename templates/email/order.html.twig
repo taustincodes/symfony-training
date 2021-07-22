@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{{ email.subject }}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* Style the header */
+        header {
+            background-color: black;
+            padding: 30px;
+            text-align: center;
+            font-size: 35px;
+            color: white;
+        }
+        .container2 {
+            padding: 5px 20px 15px 20px;
+            border-radius: 3px;
+            margin-bottom:10px;
+        }
+        span.price {
+            float: right;
+            color: grey;
+        }
+
+        /* Container for flexboxes */
+        section {
+            display: -webkit-flex;
+            display: flex;
+        }
+
+        .linkarea{
+            width:70%;
+            margin-left:15%;
+            margin-top:5%;
+            margin-bottom:5%;
+            text-align:center;
+        }
+
+        /* Style the navigation menu */
+        nav {
+            -webkit-flex: 1;
+            -ms-flex: 1;
+            flex: 1;
+            background: #ccc;
+            padding: 20px;
+        }
+
+        /* Style the list inside the menu */
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        /* Style the content */
+        article {
+            -webkit-flex: 3;
+            -ms-flex: 3;
+            flex: 3;
+            background-color: white;
+            padding: 10px;
+        }
+        #link{
+            background:black;
+            width:30%;
+            text-decoration:none;
+            color:white;
+            padding:10px 50px;
+            margin-bottom:10px;
+
+        }
+
+        /* Style the footer */
+        footer {
+            background-color: black;
+            padding: 10px;
+            text-align: center;
+            color: white;
+        }
+
+        /* Responsive layout - makes the menu and the content (inside the section) sit on top of each other instead of next to each other */
+        @media (max-width: 600px) {
+            section {
+                -webkit-flex-direction: column;
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+
+<header>
+    <img style="height:20vh" src="{{ absolute_url(asset('images/logo_slim.jpg')) }}">
+</header>
+
+<section>
+
+
+    <article>
+        <h1>Dear {{ email.toName }}!</h1>
+        <p>We have your order and it will be with you soon!</p>
+    </article>
+</section>
+
+<div class="linkarea">
+
+    <div class="container2" style="border:1px solid black; text-align: left">
+        <h4 style="text-align: center">Order summary  </h4>
+        {% for key in basket|keys %}
+            <p style="text-decoration: none; color:black;">{{ basket[key].quantity }} x {{ products[key].name }} <span class="price">£{{ products[key].price }}</span></p>
+        {% endfor %}
+        <hr>
+        <p>Total <span class="price" style="color:black"><b>£{{ status.price }}</b></span></p>
+    </div>
+<br>
+    <br>
+    <br>
+    You can check out our latest products here!
+    <br>
+    <br>
+    <br>
+    <a id="link" href="{{ url('home')}}">Visit</a>
+</div>
+
+
+
+<footer>
+    <p>Copyright &copy; 2021 T24 Productions. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

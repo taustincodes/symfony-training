@@ -1,0 +1,143 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Checkout{% endblock %}
+{% block body %}
+<div class="block" >
+    <div class="blocktitle"><h2>CHECKOUT</h2></div>
+        <div class="row">
+        <div class="col-25">
+            <div class="container2" style="border:1px solid black; text-align: left">
+                <h4 style="margin-left:15%;">Basket <span class="price" style="color:black;margin-right:10%;"><b>{{ basketQuantity }}</b><i class="fa fa-shopping-cart"></i> </span></h4>
+                {% for key in basket|keys %}
+                <p style="text-decoration: none; color:black;">{{ basket[key].quantity }} x {{ products[key].name }} <span class="price">£{{ products[key].price }}</span></p>
+                {% endfor %}
+                <hr>
+                <p>Total <span class="price" style="color:black"><b>£{{ status.price }}</b></span></p>
+            </div>
+        </div>
+        <div class="col-10"><i style="color:white; margin-top:10%;"class="fa fa-shopping-cart"></i></div>
+        <div class="col-75">
+            <div class="container2">
+                <form method="post">
+                    <div class="row" style="text-align: left">
+                        <div class="col-50">
+                            <h3>Billing Address</h3>
+                            <label for="fname"> First Name</label>
+                            <input style="width:100%;" id="firstName" type="text"  name="firstName" value="{{ app.user.firstName}}">
+                            <label for="fname"> Last Name</label>
+                            <input style="width:100%;" type="text" id="lastName" name="lastName" value="{{ app.user.lastName}}">
+                            <label for="email"> Email</label>
+                            <input style="width:100%;" type="email" id="email" name="email" value="{{ app.user.email}}">
+                            <label for="adr"> Address</label>
+                            <input style="width:100%;" type="text" id="address" name="address" value="{{ app.user.address}}">
+                            <label for="city"> Postcode</label>
+                            <input style="width:100%;" type="text" id="postcode" name="postcode" value="{{ app.user.postcode }}">
+                        </div>
+                        <div class="col-50">
+                            <h3>Payment</h3>
+                            <label for="fname">Accepted Cards</label>
+                            <div class="icon-container">
+                                <i class="fa fa-cc-visa" style="color:navy;"></i>
+                                <i class="fa fa-cc-amex" style="color:blue;"></i>
+                                <i class="fa fa-cc-mastercard" style="color:red;"></i>
+                            </div>
+                            <label for="cname">Name on Card</label>
+                            <input type="text" id="checkoutbox" name="cardname" >
+                            <label for="ccnum">Credit card number</label>
+                            <input type="text" id="checkoutbox" name="cardnumber" >
+                            <label for="expmonth">Exp Month</label>
+                            <input type="text" id="checkoutbox" name="expmonth" >
+                            <div class="row">
+                                <div class="col-50">
+                                    <label for="expyear">Exp Year</label>
+                                    <input type="text" id="checkoutbox" name="expyear" >
+                                </div>
+                                <div class="col-50">
+                                    <label for="cvv">CVV</label>
+                                    <input type="text" id="checkoutbox" name="cvv" >
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <label>
+                        <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
+                    </label>
+                    <input type="submit" value="Place order" class="register">
+                </form>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+{#    <div class = "form-box">#}
+{#        <form class="form-signin" method="post">#}
+{#            <b>Payment</b>#}
+{#            <br>#}
+{#            <br>#}
+{#            <div class="icon-container">#}
+{#                Accepted cards#}
+{#                <i class="fa fa-cc-visa" style="color:navy;"></i>#}
+{#                <i class="fa fa-cc-amex" style="color:blue;"></i>#}
+{#                <i class="fa fa-cc-mastercard" style="color:red;"></i>#}
+{#            </div>#}
+{#            <br>#}
+{#            <label for="inputFirstName">Name on Card</label>#}
+{#            <input id="form-input" type="text"  value=" "required>#}
+{#            <br>#}
+{#            <label for="inputFirstName">Card number</label>#}
+{#            <input id="form-input" type="text"  value=" "required>#}
+{#            <br>#}
+{#            <label for="inputFirstName">Expiry date</label>#}
+{#            <input id="form-input" type="text"  value=" "required>#}
+{#            <br>#}
+{#            <label for="inputFirstName">CVV</label>#}
+{#            <input id="form-input" type="text"  value=" "required>#}
+{#            <Br>#}
+{#            <b>Billing address</b>#}
+{#            <br>#}
+{#            <br>#}
+{#            <label for="inputFirstName">First Name</label>#}
+{#            <input id="form-input" type="text"  value=" "required>#}
+{#            <br>#}
+{#            <label for="inputFirstName">Last Name</label>#}
+{#            <input id="form-input" type="text"  value=" "required>#}
+{#            <br>#}
+{#            <label for="inputFirstName">Email</label>#}
+{#            <input id="form-input" type="text"  value=" "required>#}
+{#            <br>#}
+{#            <label for="inputFirstName">Address</label>#}
+{#            <input id="form-input" type="text"  value=" "required>#}
+{#            <label for="inputFirstName">Postcode</label>#}
+{#            <input id="form-input" type="text"  value=" "required>#}
+{#            <br>#}
+
+{#            <div style="text-align: left">#}
+{#                <input type="checkbox" required> I would like to receive shipping updates via Email.#}
+{#            </div>#}
+
+{#            <br>#}
+{#            <button style="width:100%;margin-top:5px;" class="button1" type="submit">#}
+{#                Confirm#}
+{#            </button>#}
+
+
+
+
+{#        </form>#}
+{#    </div>#}
+{#</div>#}
+</div>
+
+{% endblock %}

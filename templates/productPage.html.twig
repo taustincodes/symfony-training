@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+{% endblock %}
+
+
+{% block body %}
+
+
+    <div class="block"></div>
+    <div class="flex-containerpp">
+        <div><img style="height:100%; width: auto" src={{ asset(product.image) }}></div>
+        <div>
+            <h4 style="font-family: 'Trebuchet MS', sans-serif;">{{ product.name }} - £{{ product.price }}</h4>
+            <p>{{ product.description }}</p>
+            <ul>
+                {% if product.category == "tracks" %}
+                    <li>Instant delivery via email including all stems in .wav format</li>
+                    <li>MUST provide credit as stated in license</li>
+                    <li>Master mix in .WAV file format, ready for recording standard</li>
+                    <li>Unlimited streams on all platforms including Spotify</li>
+                {% elseif product.category == "merchandise" %}
+                    <li>Limited edition piece, under 10,000 produced</li>
+                    <li>FREE shipping to the UK (mainland only)</li>
+                    <li>2-3 days tracked delivery</li>
+                {% endif %}
+            </ul>
+
+            <button id="buy" class="add-to-basket" data-key="{{ product.id }}"> Add to basket</button>
+            {% if product.category == "tracks" %}
+            <button id ="buy" class="audioToggle">Preview</button>
+            {% endif %}
+        </div>
+    </div>
+
+    <audio ID="audio" autoplay controls><source src="" type="audio/wav">
+        Your browser does not support the audio element.
+    </audio>
+{% endblock %}

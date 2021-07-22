@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+{% endblock %}
+
+{% block body %}
+
+
+    <div>
+        <ul class="icons">
+            <li class="iconitem iconitemleft"><a href="#" class="fa fa-envelope fa-2x"></a><p>Instant email delivery</p></li>
+            <li class="iconitem"><a href="#" class="fa fa-credit-card fa-2x"></a><p>Secure checkout options</p></li>
+            <li class="iconitem"><a href="#" class="fa fa-file-archive-o fa-2x"></a><p>Full trackout included</p></li>
+            <li class="iconitem"><a href="#" class="fa fa-star-o fa-2x"></a><p>Rated excellent</p></li>
+        </ul>
+
+    </div>
+
+
+
+
+    <section class="container">
+        <iframe class="responsive-iframe" src="https://youtube.com/embed/LdCztu-Sq2o?autoplay=1&mute=1" frameborder=0></iframe>
+    </section>
+
+    <div class="carousel" data-flickity='{ "autoPlay": true }'>
+        {% for product in products|slice (0,6) %}
+        <div class="carousel-cell"><img style="width:100%;" src="{{ product.image }}"></div>
+        {% endfor %}
+
+
+    </div>
+{% endblock %}

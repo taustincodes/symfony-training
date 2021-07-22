@@ -1,0 +1,27 @@
+
+
+<br>
+<img id="logo" src="{{ asset('images/logo_slim.jpg') }}">
+
+
+
+
+<div class="navbar">
+    <a class="link" href="/">HOME</a>
+    <a class="link" href="/aboutUs">ABOUT US</a>
+
+    <div class="dropdown">
+        <button class="dropbtn">PRODUCTS
+{#            <i style="position:absolute; left:705px;top:457.5px;"class="fa fa-caret-down"></i>#}
+        </button>
+        <div class="dropdown-content">
+            <a class="littleLink" href="/products/tracks">TRACKS</a>
+            <a class="littleLink" href="/products/merchandise">MERCHANDISE</a>
+        </div>
+    </div>
+    <a class="link" href="/contactUs">CONTACT US</a>
+{#    <a class="link" href="/collabs">COLLABS</a>#}
+    <a class="link" href="/mybasket"><div id="popUp"><p>Added to basket</p></div>MY BASKET &nbsp;&nbsp;&nbsp;<span id="circle">{{ basketQuantity }}</span></a>
+    <a class="link"  href="/account">ACCOUNT &nbsp;&nbsp;&nbsp;<span id="circle">    <i class="fa fa-user" style="font-size:26px;color:white; margin-left:-7.5px;margin-top:4.5px;"></i></span></a>
+
+</div>

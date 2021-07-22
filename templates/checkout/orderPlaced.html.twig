@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Thank you for your order!{% endblock %}
+
+{% block body %}
+<div class="block" >
+    <div class="blocktitle"><h2>ORDER PLACED</h2></div>
+    <b>Hi {{ app.user.firstName }}, your order has been placed!</b>
+    <div id="cartrunner">
+        <div id="cart">
+            <img style="width:100%;"src="{{ asset("images/lorry.png") }}">
+        </div>
+    </div>
+    <p>Confirmation has been sent to your email address at : {{ app.user.email }}</p>
+</div>
+{% endblock %}
